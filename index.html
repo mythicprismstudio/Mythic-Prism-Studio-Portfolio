@@ -1,11 +1,622 @@
-# Create repo folder
-mkdir mythicprism.portfolio && cd mythicprism.portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mythic Prism Studio — Portfolio</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: #1e1e2e;
+      --text: #e8e8f0;
+      --muted: #7070a0;
+      --accent1: #a78bfa;
+      --accent2: #38bdf8;
+      --accent3: #f472b6;
+      --accent4: #34d399;
+      --accent5: #fb923c;
+      --gradient: linear-gradient(135deg, #a78bfa, #38bdf8, #f472b6);
+    }
 
-# Copy index.html + images/ folder here
-# Then:
-git init && git branch -m main
-git add . && git commit -m "Mythic Prism v1.0 — All 20 images"
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-# Replace YOUR_USERNAME with your GitHub username
-git remote add origin https://github.com/YOUR_USERNAME/mythicprism.portfolio.git
-git push -u origin main
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 30% 40%, rgba(167,139,250,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 70% 60%, rgba(56,189,248,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 50% 80%, rgba(244,114,182,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 2rem; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--surface); }
+
+    .skills-header { text-align: center; }
+    .skills-header .section-sub { margin-inline: auto; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .skill-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: inherit;
+    }
+
+    .skill-card:hover { transform: translateY(-4px); }
+    .skill-card:hover::before { opacity: 1; }
+
+    .skill-card[data-color="purple"]  { --c: var(--accent1); }
+    .skill-card[data-color="blue"]    { --c: var(--accent2); }
+    .skill-card[data-color="pink"]    { --c: var(--accent3); }
+    .skill-card[data-color="green"]   { --c: var(--accent4); }
+    .skill-card[data-color="orange"]  { --c: var(--accent5); }
+
+    .skill-card:hover { border-color: var(--c); }
+
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--c) 15%, transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-name {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .skill-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.55;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+      color: var(--c);
+      background: color-mix(in srgb, var(--c) 8%, transparent);
+    }
+
+    /* ── PROFICIENCY BARS ── */
+    #proficiency { max-width: 900px; margin: 0 auto; padding: 6rem 2rem; }
+
+    .prof-header { margin-bottom: 3rem; }
+
+    .prof-item { margin-bottom: 2rem; }
+
+    .prof-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .prof-label { font-weight: 600; }
+    .prof-pct { color: var(--muted); }
+
+    .prof-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .prof-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--gradient);
+      transform-origin: left;
+      animation: fillBar 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    @keyframes fillBar {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--surface); }
+
+    .gallery-header { text-align: center; margin-bottom: 3rem; }
+    .gallery-header .section-sub { margin-inline: auto; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .gallery-item:hover { transform: scale(1.02); border-color: var(--accent1); }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .gallery-placeholder span { font-size: 1.75rem; }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-inner .section-sub { margin-inline: auto; }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Mythic Prism Studio</div>
+    <ul>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#proficiency">Proficiency</a></li>
+      <li><a href="#gallery">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Design Studio &amp; Creative Agency</div>
+    <h1>Where Vision<br><span>Refracts Into Art</span></h1>
+    <p>We craft immersive visual experiences — from brand identity to digital illustration — that leave a lasting impression.</p>
+    <div class="hero-btns">
+      <a href="#gallery" class="btn btn-primary">View Our Work</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- SKILLS SHOWCASE -->
+  <section id="skills">
+    <div class="skills-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Design Skills Showcase</h2>
+      <p class="section-sub">A spectrum of creative disciplines — each refined to deliver work that resonates, converts, and endures.</p>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card" data-color="purple">
+        <div class="skill-icon">✦</div>
+        <div class="skill-name">Brand Identity</div>
+        <div class="skill-desc">Logo systems, brand guidelines, typography, and color strategy that unify a brand's voice across every touchpoint.</div>
+        <div class="skill-tags">
+          <span class="tag">Logo Design</span>
+          <span class="tag">Style Guides</span>
+          <span class="tag">Typography</span>
+          <span class="tag">Color Theory</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-color="blue">
+        <div class="skill-icon">◈</div>
+        <div class="skill-name">UI / UX Design</div>
+        <div class="skill-desc">Pixel-perfect interfaces and user-centered journeys — from wireframes and prototypes to final high-fidelity screens.</div>
+        <div class="skill-tags">
+          <span class="tag">Figma</span>
+          <span class="tag">Wireframing</span>
+          <span class="tag">Prototyping</span>
+          <span class="tag">Design Systems</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-color="pink">
+        <div class="skill-icon">❋</div>
+        <div class="skill-name">Digital Illustration</div>
+        <div class="skill-desc">Hand-crafted digital artwork ranging from concept art and character design to editorial illustration and scene composition.</div>
+        <div class="skill-tags">
+          <span class="tag">Character Art</span>
+          <span class="tag">Concept Art</span>
+          <span class="tag">Editorial</span>
+          <span class="tag">Procreate</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-color="green">
+        <div class="skill-icon">⬡</div>
+        <div class="skill-name">Motion &amp; Animation</div>
+        <div class="skill-desc">Kinetic design that breathes life into static visuals — logo animations, UI micro-interactions, and short-form motion graphics.</div>
+        <div class="skill-tags">
+          <span class="tag">After Effects</span>
+          <span class="tag">Lottie</span>
+          <span class="tag">CSS Animation</span>
+          <span class="tag">Micro-interactions</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-color="orange">
+        <div class="skill-icon">◉</div>
+        <div class="skill-name">Print &amp; Packaging</div>
+        <div class="skill-desc">Tangible design — packaging systems, posters, merch, and print collateral engineered for impact on shelves and in hands.</div>
+        <div class="skill-tags">
+          <span class="tag">Packaging</span>
+          <span class="tag">Print-Ready</span>
+          <span class="tag">Merch Design</span>
+          <span class="tag">Poster Art</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-color="purple">
+        <div class="skill-icon">▲</div>
+        <div class="skill-name">3D &amp; Rendering</div>
+        <div class="skill-desc">Dimensional visuals — product renders, environmental concepts, and stylized 3D scenes that elevate brand storytelling.</div>
+        <div class="skill-tags">
+          <span class="tag">Blender</span>
+          <span class="tag">Product Viz</span>
+          <span class="tag">Scene Design</span>
+          <span class="tag">Materials</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-color="blue">
+        <div class="skill-icon">⟡</div>
+        <div class="skill-name">Web &amp; Interactive</div>
+        <div class="skill-desc">Design-led front-end development — responsive layouts, immersive landing pages, and interactive portfolio experiences.</div>
+        <div class="skill-tags">
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Responsive</span>
+          <span class="tag">WebGL</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-color="pink">
+        <div class="skill-icon">◐</div>
+        <div class="skill-name">Social &amp; Content</div>
+        <div class="skill-desc">Scroll-stopping visuals for digital channels — templates, campaign assets, and reels tailored for platform-native engagement.</div>
+        <div class="skill-tags">
+          <span class="tag">Instagram</span>
+          <span class="tag">Reels / TikTok</span>
+          <span class="tag">Templates</span>
+          <span class="tag">Campaigns</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROFICIENCY -->
+  <section id="proficiency">
+    <div class="prof-header">
+      <div class="section-label">Expertise Levels</div>
+      <h2 class="section-title">Tool Proficiency</h2>
+      <p class="section-sub" style="color: var(--muted);">The creative toolkit behind every project.</p>
+    </div>
+
+    <div class="prof-item">
+      <div class="prof-meta"><span class="prof-label">Adobe Photoshop</span><span class="prof-pct">98%</span></div>
+      <div class="prof-track"><div class="prof-fill" style="width:98%; animation-delay:0.1s"></div></div>
+    </div>
+    <div class="prof-item">
+      <div class="prof-meta"><span class="prof-label">Adobe Illustrator</span><span class="prof-pct">96%</span></div>
+      <div class="prof-track"><div class="prof-fill" style="width:96%; animation-delay:0.2s"></div></div>
+    </div>
+    <div class="prof-item">
+      <div class="prof-meta"><span class="prof-label">Figma</span><span class="prof-pct">95%</span></div>
+      <div class="prof-track"><div class="prof-fill" style="width:95%; animation-delay:0.3s"></div></div>
+    </div>
+    <div class="prof-item">
+      <div class="prof-meta"><span class="prof-label">Procreate</span><span class="prof-pct">92%</span></div>
+      <div class="prof-track"><div class="prof-fill" style="width:92%; animation-delay:0.4s"></div></div>
+    </div>
+    <div class="prof-item">
+      <div class="prof-meta"><span class="prof-label">Adobe After Effects</span><span class="prof-pct">88%</span></div>
+      <div class="prof-track"><div class="prof-fill" style="width:88%; animation-delay:0.5s"></div></div>
+    </div>
+    <div class="prof-item">
+      <div class="prof-meta"><span class="prof-label">Blender</span><span class="prof-pct">80%</span></div>
+      <div class="prof-track"><div class="prof-fill" style="width:80%; animation-delay:0.6s"></div></div>
+    </div>
+    <div class="prof-item">
+      <div class="prof-meta"><span class="prof-label">HTML / CSS / JS</span><span class="prof-pct">85%</span></div>
+      <div class="prof-track"><div class="prof-fill" style="width:85%; animation-delay:0.7s"></div></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="gallery-header">
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Portfolio Gallery</h2>
+      <p class="section-sub">Add your images to the <code>images/</code> folder and update the <code>src</code> attributes below.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Replace src with real image paths, e.g. src="images/01.jpg" -->
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 01</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 02</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 03</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 04</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 05</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 06</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 07</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 08</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 09</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 10</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 11</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 12</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 13</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 14</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 15</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 16</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 17</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 18</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 19</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 20</div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-label">Let's Create Together</div>
+      <h2 class="section-title">Start a Project</h2>
+      <p class="section-sub">Have a vision? We'll help you refract it into something extraordinary. Reach out and let's talk.</p>
+      <div class="contact-links">
+        <a href="mailto:hello@mythicprismstudio.com" class="btn btn-primary">Email Us</a>
+        <a href="#" class="btn btn-outline">Instagram</a>
+        <a href="#" class="btn btn-outline">Behance</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 <span>Mythic Prism Studio</span>. All rights reserved.
+  </footer>
+
+</body>
+</html>

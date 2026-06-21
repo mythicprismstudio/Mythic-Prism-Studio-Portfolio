@@ -3,26 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mythic Prism Studio — Portfolio</title>
+  <title>Okara AI — AI-Powered Marketing</title>
   <style>
     :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --border: #1e1e2e;
-      --text: #e8e8f0;
-      --muted: #7070a0;
-      --accent1: #a78bfa;
-      --accent2: #38bdf8;
+      --bg: #07080f;
+      --surface: #0e1018;
+      --border: #1a1d2e;
+      --text: #e8eaf6;
+      --muted: #6b7280;
+      --accent1: #7c6ff7;
+      --accent2: #22d3ee;
       --accent3: #f472b6;
-      --accent4: #34d399;
+      --accent4: #4ade80;
       --accent5: #fb923c;
-      --gradient: linear-gradient(135deg, #a78bfa, #38bdf8, #f472b6);
+      --gradient: linear-gradient(135deg, #7c6ff7, #22d3ee, #4ade80);
+      --gradient2: linear-gradient(135deg, #7c6ff7, #f472b6);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
       background: var(--bg);
@@ -39,27 +38,36 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2.5rem;
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(7, 8, 15, 0.88);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
 
     .logo {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
       background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
+    .logo-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      opacity: 0.8;
     }
 
+    nav ul { list-style: none; display: flex; gap: 2rem; }
     nav a {
       color: var(--muted);
       text-decoration: none;
@@ -68,7 +76,6 @@
       text-transform: uppercase;
       transition: color 0.2s;
     }
-
     nav a:hover { color: var(--text); }
 
     /* ── HERO ── */
@@ -89,9 +96,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 40% at 30% 40%, rgba(167,139,250,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 70% 60%, rgba(56,189,248,0.10) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 30% at 50% 80%, rgba(244,114,182,0.08) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 45% at 25% 35%, rgba(124,111,247,0.13) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 75% 55%, rgba(34,211,238,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 50% 85%, rgba(74,222,128,0.08) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -104,6 +111,23 @@
       border: 1px solid var(--border);
       padding: 0.35rem 1rem;
       border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent4);
+      display: inline-block;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
     }
 
     .hero h1 {
@@ -124,7 +148,7 @@
     .hero p {
       font-size: 1.125rem;
       color: var(--muted);
-      max-width: 560px;
+      max-width: 580px;
       margin-bottom: 2.5rem;
     }
 
@@ -141,21 +165,30 @@
       border: none;
       transition: opacity 0.2s, transform 0.2s;
     }
-
-    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: #fff;
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
+    .btn:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-primary { background: var(--gradient); color: #fff; }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
 
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
 
     /* ── SECTION SHARED ── */
     section { padding: 6rem 2rem; }
@@ -182,13 +215,13 @@
       margin-bottom: 3.5rem;
     }
 
-    /* ── SKILLS ── */
-    #skills { background: var(--surface); }
+    /* ── FEATURES ── */
+    #features { background: var(--surface); }
 
-    .skills-header { text-align: center; }
-    .skills-header .section-sub { margin-inline: auto; }
+    .features-header { text-align: center; }
+    .features-header .section-sub { margin-inline: auto; }
 
-    .skills-grid {
+    .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.5rem;
@@ -196,7 +229,7 @@
       margin: 0 auto;
     }
 
-    .skill-card {
+    .feature-card {
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -206,27 +239,15 @@
       overflow: hidden;
     }
 
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.3s;
-      border-radius: inherit;
-    }
+    .feature-card[data-color="purple"]  { --c: var(--accent1); }
+    .feature-card[data-color="cyan"]    { --c: var(--accent2); }
+    .feature-card[data-color="pink"]    { --c: var(--accent3); }
+    .feature-card[data-color="green"]   { --c: var(--accent4); }
+    .feature-card[data-color="orange"]  { --c: var(--accent5); }
 
-    .skill-card:hover { transform: translateY(-4px); }
-    .skill-card:hover::before { opacity: 1; }
+    .feature-card:hover { border-color: var(--c); transform: translateY(-4px); }
 
-    .skill-card[data-color="purple"]  { --c: var(--accent1); }
-    .skill-card[data-color="blue"]    { --c: var(--accent2); }
-    .skill-card[data-color="pink"]    { --c: var(--accent3); }
-    .skill-card[data-color="green"]   { --c: var(--accent4); }
-    .skill-card[data-color="orange"]  { --c: var(--accent5); }
-
-    .skill-card:hover { border-color: var(--c); }
-
-    .skill-icon {
+    .feature-icon {
       width: 48px;
       height: 48px;
       border-radius: 12px;
@@ -238,25 +259,21 @@
       margin-bottom: 1.25rem;
     }
 
-    .skill-name {
+    .feature-name {
       font-size: 1rem;
       font-weight: 700;
       margin-bottom: 0.4rem;
       color: var(--text);
     }
 
-    .skill-desc {
+    .feature-desc {
       font-size: 0.85rem;
       color: var(--muted);
       margin-bottom: 1.25rem;
       line-height: 1.55;
     }
 
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
+    .feature-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
     .tag {
       font-size: 0.7rem;
@@ -268,31 +285,132 @@
       background: color-mix(in srgb, var(--c) 8%, transparent);
     }
 
-    /* ── PROFICIENCY BARS ── */
-    #proficiency { max-width: 900px; margin: 0 auto; padding: 6rem 2rem; }
+    /* ── HOW IT WORKS ── */
+    #how {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
 
-    .prof-header { margin-bottom: 3rem; }
+    .how-header { margin-bottom: 3rem; }
 
-    .prof-item { margin-bottom: 2rem; }
+    .steps { display: flex; flex-direction: column; gap: 1.5rem; }
 
-    .prof-meta {
+    .step {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 0.25s;
+    }
+
+    .step:hover { border-color: var(--accent1); }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--accent1) 15%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent1) 30%, transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent1);
+    }
+
+    .step-body {}
+    .step-title { font-weight: 700; margin-bottom: 0.35rem; }
+    .step-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── USE CASES ── */
+    #usecases { background: var(--surface); }
+
+    .usecases-header { text-align: center; margin-bottom: 3rem; }
+    .usecases-header .section-sub { margin-inline: auto; }
+
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .usecase-item {
+      aspect-ratio: 4/3;
+      border-radius: 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.25s, border-color 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .usecase-item:hover { transform: scale(1.02); border-color: var(--accent1); }
+
+    .usecase-icon { font-size: 2rem; }
+
+    .usecase-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .usecase-desc {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── OPEN SOURCE STACK ── */
+    #stack { max-width: 900px; margin: 0 auto; padding: 6rem 2rem; }
+
+    .stack-header { margin-bottom: 3rem; }
+
+    .stack-item { margin-bottom: 2rem; }
+
+    .stack-meta {
       display: flex;
       justify-content: space-between;
       font-size: 0.875rem;
       margin-bottom: 0.5rem;
     }
 
-    .prof-label { font-weight: 600; }
-    .prof-pct { color: var(--muted); }
+    .stack-label { font-weight: 600; }
+    .stack-badge {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--accent4) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent4) 30%, transparent);
+      color: var(--accent4);
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
 
-    .prof-track {
+    .stack-track {
       height: 6px;
       background: var(--border);
       border-radius: 999px;
       overflow: hidden;
     }
 
-    .prof-fill {
+    .stack-fill {
       height: 100%;
       border-radius: 999px;
       background: var(--gradient);
@@ -305,72 +423,44 @@
       to   { transform: scaleX(1); }
     }
 
-    /* ── GALLERY ── */
-    #gallery { background: var(--surface); }
+    /* ── CTA ── */
+    #cta { text-align: center; }
 
-    .gallery-header { text-align: center; margin-bottom: 3rem; }
-    .gallery-header .section-sub { margin-inline: auto; }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-      max-width: 1100px;
+    .cta-inner {
+      max-width: 640px;
       margin: 0 auto;
-    }
-
-    .gallery-item {
-      aspect-ratio: 1;
-      border-radius: 12px;
-      background: var(--bg);
+      background: var(--surface);
       border: 1px solid var(--border);
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.25s, border-color 0.25s;
+      border-radius: 24px;
+      padding: 3.5rem 2rem;
     }
 
-    .gallery-item:hover { transform: scale(1.02); border-color: var(--accent1); }
+    .cta-inner .section-sub { margin-inline: auto; }
 
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-placeholder {
-      width: 100%;
-      height: 100%;
+    .cta-email {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.5rem;
-      color: var(--muted);
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-    }
-
-    .gallery-placeholder span { font-size: 1.75rem; }
-
-    /* ── CONTACT ── */
-    #contact { text-align: center; }
-
-    .contact-inner {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .contact-inner .section-sub { margin-inline: auto; }
-
-    .contact-links {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
+      gap: 0.75rem;
+      max-width: 420px;
+      margin: 2rem auto 0;
       flex-wrap: wrap;
-      margin-top: 2rem;
+      justify-content: center;
     }
+
+    .cta-email input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .cta-email input:focus { border-color: var(--accent1); }
+    .cta-email input::placeholder { color: var(--muted); }
 
     /* ── FOOTER ── */
     footer {
@@ -388,10 +478,27 @@
       background-clip: text;
     }
 
+    footer .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    footer .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    footer .footer-links a:hover { color: var(--text); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav ul { display: none; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .usecases-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { gap: 1.5rem; }
     }
   </style>
 </head>
@@ -399,223 +506,319 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo">Mythic Prism Studio</div>
+    <div class="logo">Okara AI<span class="logo-badge">Beta</span></div>
     <ul>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#proficiency">Proficiency</a></li>
-      <li><a href="#gallery">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#usecases">Use Cases</a></li>
+      <li><a href="#cta">Get Access</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-tag">Design Studio &amp; Creative Agency</div>
-    <h1>Where Vision<br><span>Refracts Into Art</span></h1>
-    <p>We craft immersive visual experiences — from brand identity to digital illustration — that leave a lasting impression.</p>
+    <div class="hero-tag">Open-Source · No Payment Required · Runs Locally</div>
+    <h1>Marketing That<br><span>Thinks With You</span></h1>
+    <p>Okara AI is your open-source marketing co-pilot. Generate copy, campaigns, social content, and strategy — powered by free local AI models, no subscription needed.</p>
     <div class="hero-btns">
-      <a href="#gallery" class="btn btn-primary">View Our Work</a>
-      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      <a href="#cta" class="btn btn-primary">Get Early Access</a>
+      <a href="#features" class="btn btn-outline">Explore Features</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Free & Open Source</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0$</div>
+        <div class="stat-label">API Cost</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Local</div>
+        <div class="stat-label">Runs on Your Device</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Private</div>
+        <div class="stat-label">Your Data Stays Yours</div>
+      </div>
     </div>
   </section>
 
-  <!-- SKILLS SHOWCASE -->
-  <section id="skills">
-    <div class="skills-header">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Design Skills Showcase</h2>
-      <p class="section-sub">A spectrum of creative disciplines — each refined to deliver work that resonates, converts, and endures.</p>
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="features-header">
+      <div class="section-label">What Okara AI Does</div>
+      <h2 class="section-title">AI Marketing, Fully Yours</h2>
+      <p class="section-sub">Everything you need to run smart marketing — without paying for cloud AI or giving up your data.</p>
     </div>
 
-    <div class="skills-grid">
+    <div class="features-grid">
 
-      <div class="skill-card" data-color="purple">
-        <div class="skill-icon">✦</div>
-        <div class="skill-name">Brand Identity</div>
-        <div class="skill-desc">Logo systems, brand guidelines, typography, and color strategy that unify a brand's voice across every touchpoint.</div>
-        <div class="skill-tags">
-          <span class="tag">Logo Design</span>
-          <span class="tag">Style Guides</span>
-          <span class="tag">Typography</span>
-          <span class="tag">Color Theory</span>
+      <div class="feature-card" data-color="purple">
+        <div class="feature-icon">✦</div>
+        <div class="feature-name">Ad Copy Generation</div>
+        <div class="feature-desc">Write high-converting ad copy for Meta, Google, and TikTok in seconds. Provide your product and audience — Okara crafts the words.</div>
+        <div class="feature-tags">
+          <span class="tag">Facebook Ads</span>
+          <span class="tag">Google Ads</span>
+          <span class="tag">A/B Variants</span>
+          <span class="tag">Headlines</span>
         </div>
       </div>
 
-      <div class="skill-card" data-color="blue">
-        <div class="skill-icon">◈</div>
-        <div class="skill-name">UI / UX Design</div>
-        <div class="skill-desc">Pixel-perfect interfaces and user-centered journeys — from wireframes and prototypes to final high-fidelity screens.</div>
-        <div class="skill-tags">
-          <span class="tag">Figma</span>
-          <span class="tag">Wireframing</span>
-          <span class="tag">Prototyping</span>
-          <span class="tag">Design Systems</span>
-        </div>
-      </div>
-
-      <div class="skill-card" data-color="pink">
-        <div class="skill-icon">❋</div>
-        <div class="skill-name">Digital Illustration</div>
-        <div class="skill-desc">Hand-crafted digital artwork ranging from concept art and character design to editorial illustration and scene composition.</div>
-        <div class="skill-tags">
-          <span class="tag">Character Art</span>
-          <span class="tag">Concept Art</span>
-          <span class="tag">Editorial</span>
-          <span class="tag">Procreate</span>
-        </div>
-      </div>
-
-      <div class="skill-card" data-color="green">
-        <div class="skill-icon">⬡</div>
-        <div class="skill-name">Motion &amp; Animation</div>
-        <div class="skill-desc">Kinetic design that breathes life into static visuals — logo animations, UI micro-interactions, and short-form motion graphics.</div>
-        <div class="skill-tags">
-          <span class="tag">After Effects</span>
-          <span class="tag">Lottie</span>
-          <span class="tag">CSS Animation</span>
-          <span class="tag">Micro-interactions</span>
-        </div>
-      </div>
-
-      <div class="skill-card" data-color="orange">
-        <div class="skill-icon">◉</div>
-        <div class="skill-name">Print &amp; Packaging</div>
-        <div class="skill-desc">Tangible design — packaging systems, posters, merch, and print collateral engineered for impact on shelves and in hands.</div>
-        <div class="skill-tags">
-          <span class="tag">Packaging</span>
-          <span class="tag">Print-Ready</span>
-          <span class="tag">Merch Design</span>
-          <span class="tag">Poster Art</span>
-        </div>
-      </div>
-
-      <div class="skill-card" data-color="purple">
-        <div class="skill-icon">▲</div>
-        <div class="skill-name">3D &amp; Rendering</div>
-        <div class="skill-desc">Dimensional visuals — product renders, environmental concepts, and stylized 3D scenes that elevate brand storytelling.</div>
-        <div class="skill-tags">
-          <span class="tag">Blender</span>
-          <span class="tag">Product Viz</span>
-          <span class="tag">Scene Design</span>
-          <span class="tag">Materials</span>
-        </div>
-      </div>
-
-      <div class="skill-card" data-color="blue">
-        <div class="skill-icon">⟡</div>
-        <div class="skill-name">Web &amp; Interactive</div>
-        <div class="skill-desc">Design-led front-end development — responsive layouts, immersive landing pages, and interactive portfolio experiences.</div>
-        <div class="skill-tags">
-          <span class="tag">HTML / CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Responsive</span>
-          <span class="tag">WebGL</span>
-        </div>
-      </div>
-
-      <div class="skill-card" data-color="pink">
-        <div class="skill-icon">◐</div>
-        <div class="skill-name">Social &amp; Content</div>
-        <div class="skill-desc">Scroll-stopping visuals for digital channels — templates, campaign assets, and reels tailored for platform-native engagement.</div>
-        <div class="skill-tags">
+      <div class="feature-card" data-color="cyan">
+        <div class="feature-icon">◈</div>
+        <div class="feature-name">Social Media Content</div>
+        <div class="feature-desc">Generate a full week of Instagram captions, Twitter/X threads, and LinkedIn posts tailored to your brand voice and niche.</div>
+        <div class="feature-tags">
           <span class="tag">Instagram</span>
-          <span class="tag">Reels / TikTok</span>
-          <span class="tag">Templates</span>
-          <span class="tag">Campaigns</span>
+          <span class="tag">LinkedIn</span>
+          <span class="tag">Twitter/X</span>
+          <span class="tag">TikTok Scripts</span>
+        </div>
+      </div>
+
+      <div class="feature-card" data-color="pink">
+        <div class="feature-icon">❋</div>
+        <div class="feature-name">Email Campaigns</div>
+        <div class="feature-desc">Craft subject lines, body copy, and CTAs for welcome sequences, newsletters, and promotional blasts that actually get opened.</div>
+        <div class="feature-tags">
+          <span class="tag">Subject Lines</span>
+          <span class="tag">Newsletters</span>
+          <span class="tag">Sequences</span>
+          <span class="tag">Re-engagement</span>
+        </div>
+      </div>
+
+      <div class="feature-card" data-color="green">
+        <div class="feature-icon">⬡</div>
+        <div class="feature-name">SEO & Blog Writing</div>
+        <div class="feature-desc">Generate keyword-optimized blog posts, meta descriptions, and content briefs that rank. Feed Okara a topic, get a full draft back.</div>
+        <div class="feature-tags">
+          <span class="tag">Blog Posts</span>
+          <span class="tag">Meta Tags</span>
+          <span class="tag">Content Briefs</span>
+          <span class="tag">Keywords</span>
+        </div>
+      </div>
+
+      <div class="feature-card" data-color="orange">
+        <div class="feature-icon">◉</div>
+        <div class="feature-name">Brand Voice Builder</div>
+        <div class="feature-desc">Train Okara on your existing content to lock in your tone. Every output will sound unmistakably like you — consistent across all channels.</div>
+        <div class="feature-tags">
+          <span class="tag">Tone Analysis</span>
+          <span class="tag">Style Guide</span>
+          <span class="tag">Voice Matching</span>
+          <span class="tag">Examples</span>
+        </div>
+      </div>
+
+      <div class="feature-card" data-color="purple">
+        <div class="feature-icon">▲</div>
+        <div class="feature-name">Campaign Strategy</div>
+        <div class="feature-desc">Describe your goal and budget. Okara maps out a full go-to-market plan — channels, messaging pillars, timeline, and KPIs to track.</div>
+        <div class="feature-tags">
+          <span class="tag">GTM Plans</span>
+          <span class="tag">Channel Mix</span>
+          <span class="tag">KPIs</span>
+          <span class="tag">Launch Timeline</span>
+        </div>
+      </div>
+
+      <div class="feature-card" data-color="cyan">
+        <div class="feature-icon">⟡</div>
+        <div class="feature-name">Competitor Analysis</div>
+        <div class="feature-desc">Feed in competitor URLs or ad copies. Okara breaks down their positioning and suggests how to differentiate your messaging.</div>
+        <div class="feature-tags">
+          <span class="tag">Positioning</span>
+          <span class="tag">Gap Analysis</span>
+          <span class="tag">Ad Spy</span>
+          <span class="tag">Differentiation</span>
+        </div>
+      </div>
+
+      <div class="feature-card" data-color="pink">
+        <div class="feature-icon">◐</div>
+        <div class="feature-name">Local AI / No Cost</div>
+        <div class="feature-desc">Powered by Ollama + open-source models (Llama 4, Mistral, Phi-4). Runs on your machine — your data never leaves, and your bill stays at zero.</div>
+        <div class="feature-tags">
+          <span class="tag">Ollama</span>
+          <span class="tag">Llama 4</span>
+          <span class="tag">Mistral</span>
+          <span class="tag">100% Private</span>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- PROFICIENCY -->
-  <section id="proficiency">
-    <div class="prof-header">
-      <div class="section-label">Expertise Levels</div>
-      <h2 class="section-title">Tool Proficiency</h2>
-      <p class="section-sub" style="color: var(--muted);">The creative toolkit behind every project.</p>
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="how-header">
+      <div class="section-label">Simple Setup</div>
+      <h2 class="section-title">Up and Running in Minutes</h2>
+      <p class="section-sub" style="color: var(--muted);">No account, no API key, no credit card. Just install and go.</p>
     </div>
 
-    <div class="prof-item">
-      <div class="prof-meta"><span class="prof-label">Adobe Photoshop</span><span class="prof-pct">98%</span></div>
-      <div class="prof-track"><div class="prof-fill" style="width:98%; animation-delay:0.1s"></div></div>
-    </div>
-    <div class="prof-item">
-      <div class="prof-meta"><span class="prof-label">Adobe Illustrator</span><span class="prof-pct">96%</span></div>
-      <div class="prof-track"><div class="prof-fill" style="width:96%; animation-delay:0.2s"></div></div>
-    </div>
-    <div class="prof-item">
-      <div class="prof-meta"><span class="prof-label">Figma</span><span class="prof-pct">95%</span></div>
-      <div class="prof-track"><div class="prof-fill" style="width:95%; animation-delay:0.3s"></div></div>
-    </div>
-    <div class="prof-item">
-      <div class="prof-meta"><span class="prof-label">Procreate</span><span class="prof-pct">92%</span></div>
-      <div class="prof-track"><div class="prof-fill" style="width:92%; animation-delay:0.4s"></div></div>
-    </div>
-    <div class="prof-item">
-      <div class="prof-meta"><span class="prof-label">Adobe After Effects</span><span class="prof-pct">88%</span></div>
-      <div class="prof-track"><div class="prof-fill" style="width:88%; animation-delay:0.5s"></div></div>
-    </div>
-    <div class="prof-item">
-      <div class="prof-meta"><span class="prof-label">Blender</span><span class="prof-pct">80%</span></div>
-      <div class="prof-track"><div class="prof-fill" style="width:80%; animation-delay:0.6s"></div></div>
-    </div>
-    <div class="prof-item">
-      <div class="prof-meta"><span class="prof-label">HTML / CSS / JS</span><span class="prof-pct">85%</span></div>
-      <div class="prof-track"><div class="prof-fill" style="width:85%; animation-delay:0.7s"></div></div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <div class="step-title">Install Ollama</div>
+          <div class="step-desc">Download and run Ollama — a free, open-source tool that lets you run AI models locally on your laptop or server. One command installs everything.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <div class="step-title">Pull a Free Model</div>
+          <div class="step-desc">Choose your model: <code style="color:var(--accent2); font-size:0.85rem;">ollama pull llama4</code>, <code style="color:var(--accent2); font-size:0.85rem;">ollama pull mistral</code>, or <code style="color:var(--accent2); font-size:0.85rem;">ollama pull phi4</code>. All free, all open-source, all running on your machine.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <div class="step-title">Launch Okara AI</div>
+          <div class="step-desc">Start Okara with your local endpoint. It connects to Ollama automatically and opens the marketing assistant interface — no internet needed.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <div class="step-title">Create & Ship Content</div>
+          <div class="step-desc">Describe your brand, product, or campaign. Okara generates copy, content calendars, ad scripts, and strategy — ready to copy, paste, and publish.</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div class="gallery-header">
-      <div class="section-label">Selected Work</div>
-      <h2 class="section-title">Portfolio Gallery</h2>
-      <p class="section-sub">Add your images to the <code>images/</code> folder and update the <code>src</code> attributes below.</p>
+  <!-- USE CASES -->
+  <section id="usecases">
+    <div class="usecases-header">
+      <div class="section-label">Real-World Use Cases</div>
+      <h2 class="section-title">Built for Every Marketing Need</h2>
+      <p class="section-sub">From solopreneurs to growth teams — Okara AI handles the marketing tasks that eat your day.</p>
     </div>
 
-    <div class="gallery-grid">
-      <!-- Replace src with real image paths, e.g. src="images/01.jpg" -->
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 01</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 02</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 03</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 04</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 05</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 06</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 07</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 08</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 09</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 10</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 11</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 12</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 13</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 14</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 15</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 16</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 17</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 18</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 19</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span>🖼</span>Image 20</div></div>
+    <div class="usecases-grid">
+      <div class="usecase-item">
+        <div class="usecase-icon">📣</div>
+        <div class="usecase-label">Product Launch</div>
+        <div class="usecase-desc">Full campaign copy across every channel in one session</div>
+      </div>
+      <div class="usecase-item">
+        <div class="usecase-icon">📱</div>
+        <div class="usecase-label">Social Calendar</div>
+        <div class="usecase-desc">30 days of posts scheduled and ready to publish</div>
+      </div>
+      <div class="usecase-item">
+        <div class="usecase-icon">✉️</div>
+        <div class="usecase-label">Email Sequence</div>
+        <div class="usecase-desc">7-email welcome flow written and personalized</div>
+      </div>
+      <div class="usecase-item">
+        <div class="usecase-icon">🔍</div>
+        <div class="usecase-label">SEO Articles</div>
+        <div class="usecase-desc">Long-form blog posts optimized to rank on Google</div>
+      </div>
+      <div class="usecase-item">
+        <div class="usecase-icon">🎯</div>
+        <div class="usecase-label">Ad Campaigns</div>
+        <div class="usecase-desc">10+ headline and description variants for paid ads</div>
+      </div>
+      <div class="usecase-item">
+        <div class="usecase-icon">🧠</div>
+        <div class="usecase-label">Brand Messaging</div>
+        <div class="usecase-desc">Taglines, value props, and positioning statements</div>
+      </div>
+      <div class="usecase-item">
+        <div class="usecase-icon">📊</div>
+        <div class="usecase-label">Market Research</div>
+        <div class="usecase-desc">Competitor breakdowns and audience insights</div>
+      </div>
+      <div class="usecase-item">
+        <div class="usecase-icon">🎬</div>
+        <div class="usecase-label">Video Scripts</div>
+        <div class="usecase-desc">YouTube, TikTok, and Reels scripts with hooks</div>
+      </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-inner">
-      <div class="section-label">Let's Create Together</div>
-      <h2 class="section-title">Start a Project</h2>
-      <p class="section-sub">Have a vision? We'll help you refract it into something extraordinary. Reach out and let's talk.</p>
-      <div class="contact-links">
-        <a href="mailto:hello@mythicprismstudio.com" class="btn btn-primary">Email Us</a>
-        <a href="#" class="btn btn-outline">Instagram</a>
-        <a href="#" class="btn btn-outline">Behance</a>
+  <!-- OPEN SOURCE STACK -->
+  <section id="stack">
+    <div class="stack-header">
+      <div class="section-label">Powered By Open Source</div>
+      <h2 class="section-title">The Stack Behind Okara</h2>
+      <p class="section-sub" style="color: var(--muted);">Every component is free, open-source, and runs without an internet connection.</p>
+    </div>
+
+    <div class="stack-item">
+      <div class="stack-meta">
+        <span class="stack-label">Llama 4 (Meta)</span>
+        <span class="stack-badge">FREE</span>
+      </div>
+      <div class="stack-track"><div class="stack-fill" style="width:95%; animation-delay:0.1s"></div></div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-meta">
+        <span class="stack-label">Mistral 7B</span>
+        <span class="stack-badge">FREE</span>
+      </div>
+      <div class="stack-track"><div class="stack-fill" style="width:90%; animation-delay:0.2s"></div></div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-meta">
+        <span class="stack-label">Phi-4 (Microsoft)</span>
+        <span class="stack-badge">FREE</span>
+      </div>
+      <div class="stack-track"><div class="stack-fill" style="width:88%; animation-delay:0.3s"></div></div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-meta">
+        <span class="stack-label">Ollama Runtime</span>
+        <span class="stack-badge">FREE</span>
+      </div>
+      <div class="stack-track"><div class="stack-fill" style="width:100%; animation-delay:0.4s"></div></div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-meta">
+        <span class="stack-label">Groq Cloud (Free Tier)</span>
+        <span class="stack-badge">FREE TIER</span>
+      </div>
+      <div class="stack-track"><div class="stack-fill" style="width:85%; animation-delay:0.5s"></div></div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-meta">
+        <span class="stack-label">OpenCode Engine (MIT License)</span>
+        <span class="stack-badge">OPEN SOURCE</span>
+      </div>
+      <div class="stack-track"><div class="stack-fill" style="width:92%; animation-delay:0.6s"></div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="cta-inner">
+      <div class="section-label">Join the Beta</div>
+      <h2 class="section-title">Get Early Access</h2>
+      <p class="section-sub">Okara AI is in active development. Join the waitlist and be the first to run AI marketing on your own machine — for free, forever.</p>
+      <div class="cta-email">
+        <input type="email" placeholder="your@email.com" />
+        <a href="#" class="btn btn-primary">Join Waitlist</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    &copy; 2026 <span>Mythic Prism Studio</span>. All rights reserved.
+    <div class="footer-links">
+      <a href="#">GitHub</a>
+      <a href="#">Docs</a>
+      <a href="#">Discord</a>
+      <a href="#">Twitter/X</a>
+    </div>
+    &copy; 2026 <span>Okara AI</span>. Open-source under MIT License.
   </footer>
 
 </body>
